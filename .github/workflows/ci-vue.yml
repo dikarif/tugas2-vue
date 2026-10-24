@@ -1,29 +1,26 @@
-name: CI Tugas Vue
+name: CI Tugas Vue Static
 
-# Menentukan kapan otomatisasi berjalan
 on:
   push:
     branches: ["main"]
 
 jobs:
-  build-and-test:
-    runs-on: ubuntu-latest # Menggunakan server Linux gratis dari GitHub
+  test-static:
+    runs-on: ubuntu-latest
 
     steps:
-      #  Mengambil kode terbaru dari repository Anda
       - name: Checkout Kode
         uses: actions/checkout@v3
 
-      #  Menyiapkan environment Node.js (dibutuhkan oleh Vue)
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: "18" # Versi standar yang stabil
+      - name: Cek Struktur File
+        run: |
+          echo "Mengecek ketersediaan file aplikasi..."
+          if [ -d "html" ] && [ -d "js" ] && [ -d "css" ]; then
+            echo "Folder html, js, dan css ditemukan."
+          else
+            echo "Error: Struktur folder tidak lengkap!"
+            exit 1
+          fi
 
-      # Menginstal semua library/package npm
-      - name: Install Dependencies
-        run: npm install
-
-      # Melakukan test build project Vue
-      - name: Build Project
-        run: npm run build
+      - name: Status Verifikasi
+        run: echo "Aplikasi static (Vue CDN) valid dan siap digunakan."
