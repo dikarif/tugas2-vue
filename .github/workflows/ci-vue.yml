@@ -44,6 +44,9 @@ jobs:
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v5
 
+      - name: Buat Pengalih Virtual
+        run: echo '<meta http-equiv="refresh" content="0; url=./html/stok.html" />' > index.html # karena saya tidak ada file index jadi saya alihkan langsung ke  halaman stok
+
       - name: Paketkan File Website
         uses: actions/upload-pages-artifact@v3
         with:
