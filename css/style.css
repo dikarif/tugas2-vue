@@ -1,0 +1,214 @@
+.frame-login {
+  font-family: arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #f9f9f9;
+  flex-direction: column;
+}
+
+.login-container {
+  background: #ffffff;
+  padding: 40px;
+  width: 100%;
+  max-width: 320px;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-container h2 {
+  margin-bottom: 40px;
+  color: #333;
+  font-size: 22px;
+}
+
+/* Grup input (ikon + kotak teks) */
+.input-group {
+  position: relative;
+  margin-bottom: 25px;
+  text-align: left;
+}
+
+.input-group i {
+  position: absolute;
+  top: 10px;
+  left: 5px;
+  color: #888;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 10px 10px 10px 35px;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  outline: none;
+  box-sizing: border-box;
+  font-size: 14px;
+  color: #555;
+}
+
+.input-group input:focus {
+  border-bottom: 2px solid #f0ad4e;
+}
+
+.forgot-password {
+  display: block;
+  text-align: right;
+  font-size: 13px;
+  color: #8bbce0;
+  text-decoration: none;
+  margin-bottom: 25px;
+}
+
+.login-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #fbd660;
+  color: #555;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+.login-btn:hover {
+  background-color: #f0c340;
+}
+
+.register-link {
+  font-size: 13px;
+  color: #8bbce0;
+  text-decoration: none;
+}
+
+.modal-overlay {
+  display: none;
+  /* Awalnya disembunyikan */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  z-index: 9999;
+
+  justify-content: center;
+  align-items: center;
+}
+
+/* Penyesuaian Kotak Putih */
+.modal-box {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  width: 300px;
+  text-align: center;
+
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  font-family: Arial, sans-serif;
+}
+
+.btn-tutup {
+  background-color: #fbbf24;
+
+  color: #000;
+  font-weight: bold;
+  border: none;
+  padding: 10px 0;
+  width: 100%;
+
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-top: 15px;
+}
+
+.btn-tutup:hover {
+  background-color: #f59e0b;
+}
+
+@keyframes munculSmooth {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.modal-header h3 {
+  margin: 0;
+  font-size: 18px;
+  color: #333;
+}
+
+.tombol-silang {
+  font-size: 24px;
+  font-weight: bold;
+  color: #888;
+  cursor: pointer;
+}
+
+.tombol-silang:hover {
+  color: #d9534f;
+}
+
+.modal-body {
+  padding: 20px;
+  color: #555;
+  line-height: 1.5;
+}
+
+.modal-footer {
+  padding: 15px 20px;
+  border-top: 1px solid #eeeeee;
+  display: flex;
+  justify-content: flex-end;
+
+  gap: 10px;
+}
+
+.btn-batal,
+.btn-aksi {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btn-batal {
+  background-color: #f1f1f1;
+  color: #333;
+}
+
+.btn-batal:hover {
+  background-color: #e2e2e2;
+}
+
+.btn-aksi {
+  background-color: #fbbf24;
+
+  color: #000;
+}
+
+.btn-aksi:hover {
+  background-color: #f59e0b;
+}
