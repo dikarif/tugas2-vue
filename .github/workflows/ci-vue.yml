@@ -1,26 +1,54 @@
-name: CI Tugas Vue Static
+name: CI/CD Tugas Vue Static
 
 on:
   push:
     branches: ["main"]
 
-jobs:
-  test-static:
-    runs-on: ubuntu-latest
+# mengunggah file ke server hosting GitHub
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
+jobs:
+  #  CI (Continuous Integration / Pengujian)
+
+  test-kode:
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout Kode
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Cek Struktur File
         run: |
-          echo "Mengecek ketersediaan file aplikasi..."
           if [ -d "html" ] && [ -d "js" ] && [ -d "css" ]; then
-            echo "Folder html, js, dan css ditemukan."
+            echo "Aplikasi valid dan siap dirilis."
           else
             echo "Error: Struktur folder tidak lengkap!"
             exit 1
           fi
 
-      - name: Status Verifikasi
-        run: echo "Aplikasi static (Vue CDN) valid dan siap digunakan."
+  #  CD (Continuous Deployment )
+
+  deploy-website:
+    needs: test-kode # TAHAP INI HANYA JALAN JIKA TAHAP CI (test-kode) SUKSES
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Checkout Kode
+        uses: actions/checkout@v4
+
+      - name: Setup GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Paketkan File Website
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "." # Mengambil semua folder (html, css, js) untuk di-online-kan
+
+      - name: Rilis ke Internet (Deploy!)
+        id: deployment
+        uses: actions/deploy-pages@v4
