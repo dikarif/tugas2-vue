@@ -1,0 +1,29 @@
+name: CI Tugas Vue
+
+# Menentukan kapan otomatisasi berjalan
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest # Menggunakan server Linux gratis dari GitHub
+
+    steps:
+      #  Mengambil kode terbaru dari repository Anda
+      - name: Checkout Kode
+        uses: actions/checkout@v3
+
+      #  Menyiapkan environment Node.js (dibutuhkan oleh Vue)
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18" # Versi standar yang stabil
+
+      # Menginstal semua library/package npm
+      - name: Install Dependencies
+        run: npm install
+
+      # Melakukan test build project Vue
+      - name: Build Project
+        run: npm run build
